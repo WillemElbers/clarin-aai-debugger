@@ -1,0 +1,30 @@
+
+* extract war into /lat/webapps
+* create symbolic link 'current' to point to the latest version.
+* tomcat context fragment (ds#aaid.xml):
+    <?xml version='1.0' encoding='utf-8'?>
+        <Context path="/ds/aaid" docBase="/lat/webapps/jaatest/current" debug="0" reloadable="true" crossContext="true">
+    </Context>
+
+* configure the shhaa filter (shhaa.xml)
+
+* apache configuration
+    - configure mod_jk worker
+    - configure lazy SP protection:
+    <Location /ds/aaid>
+        AuthType            shibboleth
+        ShibRequireSession  Off
+        ShibUseHeaders      On
+        Satisfy             All
+        Require             shibboleth
+    </Location>
+
+
+* make sure that the configured login/logout endpoints exist in the shibboleth sp configuration
+    - Shibboleth endpoint (/DS):
+    <SessionInitiator type="Chaining" Location="/DS" isDefault="true" id="DS" relayState="cookie">
+        <SessionInitiator type="SAML2" acsIndex="1" template="bindingTemplate.html"/>
+        <SessionInitiator type="Shib1" acsIndex="5"/>
+        <SessionInitiator type="SAMLDS" URL="https://lux16.mpi.nl/discojuice/idp.html" />
+    </SessionInitiator>
+

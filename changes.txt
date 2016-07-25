@@ -1,0 +1,4 @@
+11-10-2011  version 1.0
+
+examine incoming headers and the java security context and display this in a
+html page
