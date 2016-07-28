@@ -1,0 +1,28 @@
+ html,body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    min-height: 100vh;
+    font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%
+}
+
+.wrapper {
+    width: 100%;
+    min-height: 100vh;    
+}
+
+.container-fill {
+    min-height: 100vh;
+    padding-bottom: -14em;
+    /*margin-bottom: -14em;*/
+}
+
+.header {
+    height: 4em;
+    max-height: 4em;
+}
+
+.footer {
+    height: 10em;
+    max-height: 10em;
+}
